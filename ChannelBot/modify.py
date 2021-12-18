@@ -45,10 +45,7 @@ async def modify(_, msg: Message):
                     caption = msg.caption.markdown + '\n\n' + caption
                 elif msg.text:
                     caption = msg.text.markdown + '\n\n' + caption
-            if webpage_preview:
-                disable_webpage_preview = False
-            else:
-                disable_webpage_preview = True
+            disable_webpage_preview = not webpage_preview
             if buttons:
                 await msg.edit_text(
                     caption,

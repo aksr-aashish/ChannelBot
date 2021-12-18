@@ -47,10 +47,7 @@ async def remove_channel(user_id, channel_id):
         channels = list(set(ast.literal_eval(q.channels)))
         if q.channels and channel_id in channels:
             channels.remove(channel_id)
-            if len(channels) == 0:
-                q.channels = None
-            else:
-                q.channels = str(channels)
+            q.channels = None if not channels else str(channels)
     else:
         SESSION.add(Users(user_id))
     SESSION.commit()

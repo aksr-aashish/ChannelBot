@@ -152,10 +152,7 @@ async def toggle_webpage_preview(channel_id, value):
     q = SESSION.query(Channel).get(channel_id)
     if q:
         # print(value)
-        if value:
-            q.webpage_preview = True
-        else:
-            q.webpage_preview = False
+        q.webpage_preview = bool(value)
         # print(q.webpage_preview)
         SESSION.commit()
         return True

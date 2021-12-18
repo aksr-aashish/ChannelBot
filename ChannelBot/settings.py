@@ -14,32 +14,22 @@ async def channel_settings(channel_id, bot):
         webpage_preview = info['webpage_preview']
         sticker_id = info['sticker_id']
         edit_mode = info['edit_mode']
-        if caption:
-            text += f"**Caption** : Set \n\n"
-        else:
-            text += f'**Caption** : Not Set. \n\n'
-        if position:
-            text += f'**Caption Position** : {position.capitalize()} the previous caption\n\n'
-        else:
+        text += '**Caption** : Set \n\n' if caption else '**Caption** : Not Set. \n\n'
+        if not position:
             position = 'below'
-            text += f'**Caption Position** : {position.capitalize()} the previous caption\n\n'
-        if buttons:
-            text += f"**Buttons** : Set \n\n"
-        else:
-            text += f'**Buttons** : Not Set. \n\n'
-        if edit_mode:
-            text += f'**Edit Mode** : {edit_mode.capitalize()} Messages\n\n'
-        else:
+        text += f'**Caption Position** : {position.capitalize()} the previous caption\n\n'
+        text += '**Buttons** : Set \n\n' if buttons else '**Buttons** : Not Set. \n\n'
+        if not edit_mode:
             edit_mode = 'media'
-            text += f'**Edit Mode** : {edit_mode.capitalize()} Messages\n\n'
+        text += f'**Edit Mode** : {edit_mode.capitalize()} Messages\n\n'
         if sticker_id:
-            text += f'**Sticker** : Set (Sent Above)\n\n'
+            text += '**Sticker** : Set (Sent Above)\n\n'
         else:
-            text += f'**Sticker** : Not Set \n\n'
+            text += '**Sticker** : Not Set \n\n'
         if webpage_preview:
-            text += f'**Webpage Preview** : True \n\n'
+            text += '**Webpage Preview** : True \n\n'
         else:
-            text += f'**Webpage Preview** : False \n\n'
+            text += '**Webpage Preview** : False \n\n'
             webpage_preview = 'False'
         markup = [
             [
